@@ -107,18 +107,7 @@ public class ventanaMastermind extends JFrame implements ActionListener {
 				coloresRand.add(colorDupe.get(valorEntero));
 				colorDupe.remove(valorEntero);
 			}
-			p1 = new PictureBox();
-			p1.setBackground(coloresRand.get(0));
-			p2 = new PictureBox();
-			p2.setBackground(coloresRand.get(1));
-			p3 = new PictureBox();
-			p3.setBackground(coloresRand.get(2));
-			p4 = new PictureBox();
-			p4.setBackground(coloresRand.get(3));
-			coloresPanel.add(p1);
-			coloresPanel.add(p2);
-			coloresPanel.add(p3);
-			coloresPanel.add(p4);
+			color_fondo(0)
 			break;
 		case "Medio":
 			ArrayList<Color> colorDupe2 = (ArrayList<Color>) colores.clone();
@@ -128,27 +117,45 @@ public class ventanaMastermind extends JFrame implements ActionListener {
 				coloresRand.add(colorDupe2.get(valorEntero));
 				colorDupe2.remove(valorEntero);
 			}
-			p1 = new PictureBox();
-			p1.setBackground(coloresRand.get(0));
-			p2 = new PictureBox();
-			p2.setBackground(coloresRand.get(1));
-			p3 = new PictureBox();
-			p3.setBackground(coloresRand.get(2));
-			p4 = new PictureBox();
-			p4.setBackground(coloresRand.get(3));
-			p5 = new PictureBox();
-			p5.setBackground(coloresRand.get(4));
-			coloresPanel.add(p1);
-			coloresPanel.add(p2);
-			coloresPanel.add(p3);
-			coloresPanel.add(p4);
-			coloresPanel.add(p5);
+			color_fondo(1);
+			break;
+		case "Avanzado":
+			ArrayList<Color> colorDupe3 = (ArrayList<Color>) colores.clone();
+
+			for (int i = 0; i < 5; i++) {
+				int valorEntero = (int) Math.floor(Math.random() * (11 - 0) + 0);
+				coloresRand.add(colorDupe2.get(valorEntero));
+				colorDupe2.remove(valorEntero);
+			}
+			color_fondo(2);
 			break;
 		default:
 			break;
 		}
 	}
-
+public static void color_fondo(int i) {
+	p1 = new PictureBox();
+	p1.setBackground(coloresRand.get(0));
+	p2 = new PictureBox();
+	p2.setBackground(coloresRand.get(1));
+	p3 = new PictureBox();
+	p3.setBackground(coloresRand.get(2));
+	p4 = new PictureBox();
+	p4.setBackground(coloresRand.get(3));
+	coloresPanel.add(p1);
+	coloresPanel.add(p2);
+	coloresPanel.add(p3);
+	coloresPanel.add(p4);
+	if(i==1) {
+		p5.setBackground(coloresRand.get(4));
+		coloresPanel.add(p5);
+	}else if(i==2){
+		p5.setBackground(coloresRand.get(4));
+		p6.setBackground(coloresRand.get(5));
+		coloresPanel.add(p5);
+		coloresPanel.add(p6);
+	}
+}
 	// crear solucion
 	public static void crea_solucion(String nivel) {
 		switch (nivel) {
@@ -156,53 +163,49 @@ public class ventanaMastermind extends JFrame implements ActionListener {
 			Color combinacionSecreta[] = new Color[4];
 			for (int i = 0; i < 4; i++) {
 				int valorEntero = (int) Math.floor(Math.random() * (4 - 0) + 0);
-
 				combinacionSecreta[i] = coloresRand.get(valorEntero);
 			}
-
-			p1 = new PictureBox();
-			p1.setBackground(combinacionSecreta[0]);
-			p2 = new PictureBox();
-			p2.setBackground(combinacionSecreta[1]);
-			p3 = new PictureBox();
-			p3.setBackground(combinacionSecreta[2]);
-			p4 = new PictureBox();
-			p4.setBackground(combinacionSecreta[3]);
-			combinacionPanel.add(p1);
-			combinacionPanel.add(p2);
-			combinacionPanel.add(p3);
-			combinacionPanel.add(p4);
+			llenar_secreta()
 			break;
 
 		case "Medio":
 			Color combinacionSecreta2[] = new Color[5];
 			for (int i = 0; i < 4; i++) {
 				int valorEntero = (int) Math.floor(Math.random() * (5 - 0) + 0);
+				combinacionSecreta2[i] = coloresRand.get(valorEntero);
+			}
+			llenar_secreta()
+			break;
+			
+		case "Avanzado":
+			Color combinacionSecreta3[] = new Color[6];
+			for (int i = 0; i < 4; i++) {
+				int valorEntero = (int) Math.floor(Math.random() * (6 - 0) + 0);
 
 				combinacionSecreta2[i] = coloresRand.get(valorEntero);
 			}
-
-			p1 = new PictureBox();
-			p1.setBackground(combinacionSecreta2[0]);
-			p2 = new PictureBox();
-			p2.setBackground(combinacionSecreta2[1]);
-			p3 = new PictureBox();
-			p3.setBackground(combinacionSecreta2[2]);
-			p4 = new PictureBox();
-			p4.setBackground(combinacionSecreta2[3]);
-			p5 = new PictureBox();
-			p5.setBackground(combinacionSecreta2[4]);
-			combinacionPanel.add(p1);
-			combinacionPanel.add(p2);
-			combinacionPanel.add(p3);
-			combinacionPanel.add(p4);
-			combinacionPanel.add(p5);
+			llenar_secreta()
 			break;
 		default:
 			break;
 		}
 	}
+	//funcion para llenar la combinacion secreta
+	public static void llenar_secreta() {
+		p1 = new PictureBox();
+		p1.setBackground(combinacionSecreta2[0]);
+		p2 = new PictureBox();
+		p2.setBackground(combinacionSecreta2[1]);
+		p3 = new PictureBox();
+		p3.setBackground(combinacionSecreta2[2]);
+		p4 = new PictureBox();
+		p4.setBackground(combinacionSecreta2[3]);
+		combinacionPanel.add(p1);
+		combinacionPanel.add(p2);
+		combinacionPanel.add(p3);
+		combinacionPanel.add(p4);
 
+	}
 	// funcion crea linea de juego
 	public static void crear_linea_bola() {
 		p1 = new PictureBox();
