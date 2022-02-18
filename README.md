@@ -3,6 +3,8 @@
 Marcos Couso, Albert Perez y Pau Robusté
 - Lenguaje usado:
 Java
+- Version actual:
+v1.1
 ------------	------------	------------
 
  ------------	Funcionamiento	------------  
