@@ -1,4 +1,6 @@
-package t5.jg.mastermind;
+package Main;
+
+import Vistas.ventanaMastermind;
 
 public class mainApp {
 
